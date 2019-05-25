@@ -1,0 +1,12 @@
+来源：
+《高效精准》敏感字&词过滤：http://blog.csdn.net/hubiao_0618/article/details/45076871
+
+文件列表：
+SensitiveWord.java
+CensorWords.txt
+
+特性：
+匹配度高，速度快。
+
+使用：
+txt敏感词库放在classpath下，也就是放在src下面。

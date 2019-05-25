@@ -1,0 +1,10 @@
+https://authenticate.nextiva.com/AccountValidation/login.action
+https://www.evernote.com/Login.action
+https://www.smart911.com/smart911/login.action
+https://res.cisco.com/websafe/login.action
+https://www.synchronycredit.com/eSecurity/Login/login.action?clientId=amazon&accountType=plcc&langId=en
+https://account.sonyentertainmentnetwork.com/liquid/external/auth/login.action
+https://ctconline.certification-partners.com/ctconline-ciw/pages/login.action
+https://nefuniversity.skillport.com/skillportfe/login.action
+https://www.lendingclub.com/account/login.action
+https://www.wavemaker.com/learn/app-development/variables/login-action/

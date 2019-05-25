@@ -1,0 +1,12 @@
+来源：
+Java关键字过滤：http://blog.csdn.net/linfssay/article/details/7599262
+
+文件列表：
+KeyWordFilter.java
+keywords.properties
+
+特性：
+匹配度高，速度稍慢。
+
+使用：
+properties敏感词库放在classpath下，也就是放在src下面。

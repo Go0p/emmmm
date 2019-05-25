@@ -1,0 +1,12 @@
+来源：
+高效Java敏感词、关键词过滤工具包_过滤非法词句：http://blog.csdn.net/ranjio_z/article/details/6299834
+
+文件列表：
+WordFilter.java
+words.dict
+
+特性：
+匹配度高，速度尚可。
+
+使用：
+dict敏感词库放在classpath下，也就是放在src下面。

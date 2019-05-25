@@ -1,0 +1,17 @@
+disu 一般词汇（一般）
+shehui 社会事件（社会）
+gucai 彩民生活（彩票）
+huaxue 化学医药（医药）
+qicai 器材广告（器材）
+nvxing 女性词汇（女性）
+seqing 情色词汇（情色）
+yinsi 隐私词汇（隐私）
+junshi 军事历史（军事）
+xiejiao 反动邪教（邪教）
+zhengzhi 政治事件（政治）
+zhengfu 政府词汇（政府）
+beizhu 备注词汇（备注）
+
+
+
+ 
