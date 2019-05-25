@@ -7,7 +7,7 @@ POC-T :https://github.com/Xyntax/POC-T
 
 ![struts2](https://github.com/Go0p/emmmm/blob/master/struts2.png)
 
--iU 指定目标!struts2](F:\Goop2.0\struts2.png)
+-iU 指定目标
 
 -iF 批量
 
