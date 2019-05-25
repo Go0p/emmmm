@@ -11,7 +11,7 @@ import sys
 from lib.core.setting import banner, setPaths
 from lib.parse.cmdline import cmdLineParser
 from lib.core.data import cmdLineOptions, paths, conf, th, HCONF
-from lib.core.hookrequests import patch_session,_disable_warnings
+from lib.core.hookrequests import patch_session, _disable_warnings
 from lib.core.options import initOptions
 from lib.core.setting import outputscreen
 from lib.scheduler.engine import run
