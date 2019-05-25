@@ -5,7 +5,7 @@ POC-T :https://github.com/Xyntax/POC-T
 
 加载一个文件夹下所有的脚本：
 
-![1558755896679](F:\Goop2.0\struts2.png)
+https://github.com/Go0p/emmmm/blob/master/struts2.png
 
 -iU 指定目标
 
