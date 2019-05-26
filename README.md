@@ -1,6 +1,8 @@
 # emmmm
 POC-T :https://github.com/Xyntax/POC-T
 
+struts2系列，jboss，weblogic，webshell(爆破的方式),thinkphp5_rce....
+
 想的很多，做到的很少。。
 
 加载一个文件夹下所有的脚本：
@@ -9,10 +11,12 @@ POC-T :https://github.com/Xyntax/POC-T
 
 -iU 指定目标
 
--iF 批量
+-iF 多个目标
 
--s 指定脚本
+-s 指定脚本，可指定多个(eg. -s struts2_003 struts2_045 struts2_046)
 
 -sF 不产生报告
+
+-oF 指定报告名
 
 -pI  指定代理IP

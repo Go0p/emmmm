@@ -10,7 +10,7 @@ import sys
 
 
 def cmdLineParser():
-    parser = argparse.ArgumentParser(usage='python3 Charon.py -u/-f url/file --script scripts')
+    parser = argparse.ArgumentParser(usage='python3 Charon.py -iU/-iF url/file -s/-As load scripts')
 
     engine = parser.add_argument_group('Engine')
 
