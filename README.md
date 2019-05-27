@@ -5,6 +5,8 @@ struts2系列，jboss，weblogic，webshell(爆破的方式),thinkphp5_rce....
 
 想的很多，做到的很少。。
 
+pip install -r requirements.txt
+
 加载一个文件夹下所有的脚本：
 
 ![struts2](https://github.com/Go0p/emmmm/blob/master/struts2.png)
