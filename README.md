@@ -11,6 +11,8 @@ pip install -r requirements.txt
 
 ![struts2](https://github.com/Go0p/emmmm/blob/master/struts2.png)
 
+![敏感信息andwebshell](https://github.com/Go0p/emmmm/blob/master/敏感信息andwebshell.png)
+
 -iU 指定目标
 
 -iF 多个目标
