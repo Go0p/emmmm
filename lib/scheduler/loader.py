@@ -79,7 +79,7 @@ def load_target_mode():
 def load_file_mode():
     subs = []
     try:
-        with open(conf.INPUT_FILE_PATH,encoding='UTF-8')as p:
+        with open(conf.INPUT_FILE_PATH)as p:
             lines = p.readlines()
         for line in lines:
             line = line.strip()
@@ -101,9 +101,9 @@ def load_file_mode():
         err_msg = "The %s was not found" % conf.INPUT_FILE_PATH
         sys.exit(outputscreen.error(err_msg))
     except:
-        # raise
-        err_msg = "又有bug了啊，我哭 QWQ"
-        sys.exit(outputscreen.error(err_msg))
+        raise
+        # err_msg = "又有bug了啊，我哭 QWQ"
+        # sys.exit(outputscreen.error(err_msg))
 
 
 # 加载指定代理IP

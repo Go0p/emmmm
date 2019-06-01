@@ -9,8 +9,8 @@ headers = {
 
 
 def poc(url):
-    file_name = file_content = ''.join(random.sample(string.ascii_letters + string.digits, 8))
-    url1 = "%s/%s.txt" % (url, file_name)
+    file_content = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+    url1 = "%s/%s.txt" % (url, 'go0p')
 
     try:
         req = requests.put(url1, headers=headers, data={'test': file_content})

@@ -13,9 +13,11 @@ pip install -r requirements.txt
 
 ![敏感信息andwebshell](https://github.com/Go0p/emmmm/blob/master/敏感信息andwebshell.png)
 
+![小马大马](https://github.com/Go0p/emmmm/blob/master/小马大马.png)
+
 -iU 指定目标
 
--iF 多个目标
+-iF 指定目标文件
 
 -s 指定脚本，可指定多个(eg. -s struts2_003 struts2_045 struts2_046)
 

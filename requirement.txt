@@ -1,3 +1,0 @@
-gevent
-google-api-python-client
-requests

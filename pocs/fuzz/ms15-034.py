@@ -23,5 +23,5 @@ def poc(url):
 
 
 if __name__ == '__main__':
-    a = poc('hmzhihui.hmschool.edu.sh.cn')
+    a = poc('http://139.219.238.208:80')
     print(a)
