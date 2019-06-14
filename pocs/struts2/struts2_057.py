@@ -12,7 +12,11 @@ from urllib.parse import urlparse
 from plugin.urlparser import iterate_path, get_domain
 
 
-def poc(url):
+def poc(url, **kwargs):
+    if kwargs.get('ip'):
+        url = 'http://' + kwargs.get('ip') + ':' + kwargs.get('port')
+    else:
+        url = url
     timeout = 10
     domain = get_domain(url)
     proxies = {'http': '127.0.0.1:9999'}

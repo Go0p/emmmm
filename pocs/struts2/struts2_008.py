@@ -5,8 +5,12 @@ import random
 warnings.filterwarnings("ignore")
 
 
-def poc(url):
-    timeout = 15
+def poc(url, **kwargs):
+    if kwargs.get('ip'):
+        url = 'http://' + kwargs.get('ip') + ':' + kwargs.get('port')
+    else:
+        url = url
+    timeout = 10
     proxies = {'http': '127.0.0.1:9999'}
     ran_a = random.randint(10000000, 20000000)
     ran_b = random.randint(1000000, 2000000)

